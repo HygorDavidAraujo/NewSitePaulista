@@ -435,11 +435,22 @@ footer {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
+    /* Menu flutuante (dropdown) ancorado ao botão hamburguer */
     .nav-menu {
+        position: fixed;
+        top: 64px; /* abaixo do botão flutuante */
+        right: 20px;
         display: none;
         flex-direction: column;
-        width: 100%;
+        width: auto;
+        max-width: 300px;
         gap: 0;
+        background: linear-gradient(135deg, var(--cor-preta), #2d2d2d);
+        border: 1px solid #333;
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+        padding: 8px 0;
+        z-index: 1999;
     }
 
     .nav-menu.active {
@@ -447,8 +458,14 @@ footer {
     }
 
     .nav-menu li a {
+        padding: 14px 18px;
         border-radius: 0;
         border-bottom: 1px solid #333;
+        color: var(--cor-branca);
+    }
+
+    .nav-menu li:last-child a {
+        border-bottom: none;
     }
 
     .brand-name h1 {
