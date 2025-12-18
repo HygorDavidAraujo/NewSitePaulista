@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ACCORDION - PÁGINA SOBRE
     // ===================================
     const accordionButtons = document.querySelectorAll('.accordion-button');
+    const accordionContents = document.querySelectorAll('.accordion-content');
     
     accordionButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -67,16 +68,33 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Fechar todos os accordions
             accordionButtons.forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.accordion-content').forEach(content => {
+            accordionContents.forEach(content => {
                 content.classList.remove('active');
+                content.style.maxHeight = null;
+                content.style.paddingTop = null;
+                content.style.paddingBottom = null;
             });
             
             // Se não estava ativo, ativar o clicado
             if (!isActive) {
                 this.classList.add('active');
                 targetContent.classList.add('active');
+                // Expandir suavemente: altura baseada no conteúdo real
+                targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+                // Garantir padding visível em inline style durante a transição
+                targetContent.style.paddingTop = '15px';
+                targetContent.style.paddingBottom = '15px';
             }
         });
+    });
+
+    // Ajustar altura inicial dos accordions já ativos no load (ex.: primeira seção aberta)
+    accordionContents.forEach(content => {
+        if (content.classList.contains('active')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.paddingTop = '15px';
+            content.style.paddingBottom = '15px';
+        }
     });
     
     // ===================================
