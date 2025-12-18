@@ -1,0 +1,1253 @@
+/* ===================================
+   PIZZARIA PAULISTA - STYLE.CSS
+   Cores: Preto, Branco, Marsala, Verde Escuro
+   =================================== */
+
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #8B1F41; /* Marsala */
+    --cor-secundaria: #1B5E20; /* Verde Escuro */
+    --cor-preta: #1a1a1a;
+    --cor-branca: #FFFFFF;
+    --cor-cinza-claro: #f5f5f5;
+    --cor-cinza-medio: #e0e0e0;
+    --cor-hover: #a62953;
+    --fonte-principal: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    color: var(--cor-preta);
+    line-height: 1.6;
+    background-color: var(--cor-branca);
+}
+
+/* ===================================
+   HEADER
+   =================================== */
+
+header {
+    background: linear-gradient(135deg, var(--cor-preta) 0%, #2d2d2d 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-top {
+    background-color: var(--cor-primaria);
+    padding: 10px 0;
+}
+
+.header-top-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.horario-funcionamento {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cor-branca);
+    font-size: 0.9rem;
+}
+
+.horario-funcionamento svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--cor-branca);
+}
+
+.horario-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+.horario-texto strong {
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-telefone {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branca);
+    border-color: var(--cor-secundaria);
+}
+
+.btn-telefone:hover {
+    background-color: #2e7d32;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: var(--cor-branca);
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-pedido {
+    background-color: var(--cor-branca);
+    color: var(--cor-primaria);
+    font-weight: 700;
+    border-color: var(--cor-branca);
+}
+
+.btn-pedido:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.brand-name {
+    color: var(--cor-branca);
+}
+
+.brand-name h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--cor-primaria);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.brand-name p {
+    font-size: 0.9rem;
+    color: var(--cor-cinza-medio);
+    margin: 0;
+}
+
+/* Menu de navegação */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.nav-menu li a {
+    color: var(--cor-branca);
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    background-color: var(--cor-primaria);
+    transform: translateY(-2px);
+}
+
+/* Menu mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--cor-branca);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* ===================================
+   MAIN CONTENT
+   =================================== */
+
+main {
+    min-height: calc(100vh - 400px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--cor-preta);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+/* Ações na hero */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    padding: 14px 28px;
+    font-size: 1rem;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.btn-hero-primary {
+    background: linear-gradient(135deg, var(--cor-primaria), #b02c5d);
+    color: var(--cor-branca);
+}
+
+.btn-hero-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(139, 31, 65, 0.35);
+}
+
+.btn-hero-outline {
+    background: transparent;
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+}
+
+.btn-hero-outline:hover {
+    background: var(--cor-primaria);
+    color: var(--cor-branca);
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+footer {
+    background: linear-gradient(135deg, var(--cor-preta) 0%, #2d2d2d 100%);
+    color: var(--cor-branca);
+    padding: 50px 20px 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.footer-section p {
+    line-height: 1.8;
+    color: var(--cor-cinza-medio);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--cor-primaria);
+    border-radius: 50%;
+    color: var(--cor-branca);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--cor-secundaria);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(139, 31, 65, 0.4);
+}
+
+.social-link svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+.footer-info {
+    list-style: none;
+}
+
+.footer-info li {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+    color: var(--cor-cinza-medio);
+}
+
+.footer-info li:last-child {
+    border-bottom: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #333;
+    color: var(--cor-cinza-medio);
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   RESPONSIVIDADE
+   =================================== */
+
+@media (max-width: 768px) {
+    .header-top-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .horario-funcionamento {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-header {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    .header-main {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li a {
+        border-radius: 0;
+        border-bottom: 1px solid #333;
+    }
+
+    .brand-name h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .brand-name h1 {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 1.7rem;
+    }
+
+    .btn-header {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+}
+
+/* ===================================
+   ANIMAÇÕES
+   =================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===================================
+   UTILIDADES
+   =================================== */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: var(--fonte-principal);
+}
+
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 31, 65, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branca);
+}
+
+.btn-secondary:hover {
+    background-color: #2e7d32;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(27, 94, 32, 0.3);
+}
+
+/* ===================================
+   PÁGINA SOBRE - ACCORDION
+   =================================== */
+
+.sobre-intro {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(139, 31, 65, 0.05), rgba(27, 94, 32, 0.05));
+    border-radius: 15px;
+    border-left: 5px solid var(--cor-primaria);
+}
+
+.sobre-intro-title {
+    color: var(--cor-primaria);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.sobre-intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.sobre-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.sobre-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.accordion-button {
+    width: 100%;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, var(--cor-preta), #2d2d2d);
+    color: var(--cor-branca);
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: var(--fonte-principal);
+}
+
+.accordion-button:hover {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-hover));
+}
+
+.accordion-button.active {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+}
+
+.accordion-title {
+    flex: 1;
+    text-align: left;
+}
+
+.accordion-arrow {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-button.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--cor-branca);
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 25px;
+}
+
+.accordion-content.active {
+    max-height: 500px;
+    padding: 25px;
+    border-top: 3px solid var(--cor-primaria);
+}
+
+.accordion-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+}
+
+.valores-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.valores-list li {
+    padding: 12px 0 12px 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    position: relative;
+}
+
+.valores-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cor-secundaria);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* Responsividade Sobre */
+@media (max-width: 768px) {
+    .sobre-intro {
+        padding: 20px;
+    }
+
+    .sobre-intro-title {
+        font-size: 1.6rem;
+    }
+
+    .sobre-intro p {
+        font-size: 1rem;
+    }
+
+    .accordion-button {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+    }
+
+    .accordion-icon {
+        font-size: 1.3rem;
+    }
+
+    .accordion-content p,
+    .valores-list li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sobre-intro {
+        padding: 15px;
+    }
+
+    .sobre-intro-title {
+        font-size: 1.4rem;
+    }
+
+    .accordion-button {
+        padding: 12px 15px;
+        font-size: 1rem;
+        gap: 10px;
+    }
+
+    .accordion-icon {
+        font-size: 1.2rem;
+    }
+
+    .accordion-content.active {
+        padding: 15px;
+    }
+}
+
+/* ===================================
+   PÁGINA CARDÁPIO
+   =================================== */
+
+.cardapio-accordion {
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* Rolagem por categoria: evita corte vertical das listas longas */
+.cardapio-accordion .accordion-content {
+    padding: 10px 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--cor-primaria) var(--cor-preta);
+}
+
+.cardapio-accordion .accordion-content.active {
+    max-height: 70vh; /* limita a altura e habilita a rolagem */
+    padding: 15px 0;
+    border-top: 3px solid var(--cor-primaria);
+}
+
+.cardapio-accordion .accordion-content::-webkit-scrollbar {
+    width: 10px;
+}
+.cardapio-accordion .accordion-content::-webkit-scrollbar-track {
+    background: var(--cor-preta);
+    border-radius: 6px;
+}
+.cardapio-accordion .accordion-content::-webkit-scrollbar-thumb {
+    background-color: var(--cor-primaria);
+    border-radius: 6px;
+    border: 2px solid var(--cor-preta);
+}
+
+/* Agrupamento de Vinhos por país e subtítulos */
+.menu-group { margin: 1rem 0 2rem; }
+.menu-group-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 0.75rem;
+}
+.menu-subgroup-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--cor-primaria);
+    margin: 0.5rem 0 0.5rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.menu-item {
+    background: var(--cor-branca);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--cor-cinza-claro);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu-item:hover {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 4px 12px rgba(139, 31, 65, 0.15);
+    transform: translateY(-3px);
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.menu-item-name {
+    color: var(--cor-preta);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+}
+
+.menu-item-price {
+    color: var(--cor-primaria);
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.menu-item-desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Estilos específicos para Pizzas */
+.pizza-tamanhos {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.tamanho-badge {
+    background: linear-gradient(135deg, var(--cor-secundaria), #2e7d32);
+    color: var(--cor-branca);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.pizza-item .pizza-prices {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+}
+
+.pizza-prices span {
+    color: var(--cor-primaria);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Estilos específicos para Vinhos */
+.vinho-item {
+    position: relative;
+}
+
+.vinho-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.vinho-badge.tinto {
+    background-color: #8B1F41;
+    color: var(--cor-branca);
+}
+
+.vinho-badge.branco {
+    background-color: #f0e68c;
+    color: #333;
+}
+
+.vinho-badge.rose {
+    background-color: #ff69b4;
+    color: var(--cor-branca);
+}
+
+.vinho-badge.espumante {
+    background-color: #ffd700;
+    color: #333;
+}
+
+/* Footer do Cardápio */
+.cardapio-footer {
+    max-width: 1000px;
+    margin: 40px auto 0;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(139, 31, 65, 0.05), rgba(27, 94, 32, 0.05));
+    border-radius: 15px;
+}
+
+.observacao {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.btn-delivery {
+    font-size: 1.1rem;
+    padding: 15px 35px;
+}
+
+/* Mosaico de fotos flutuantes */
+.mosaic-section {
+    margin: 60px auto;
+    max-width: 1200px;
+}
+
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-auto-rows: 180px;
+    grid-auto-flow: dense;
+    gap: 14px;
+}
+
+.mosaic-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    background: #f7f7f7;
+}
+
+.mosaic-item:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.22);
+}
+
+.mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Variações de span para acomodar retrato/paisagem */
+.mosaic-item.span-2x {
+    grid-row: span 2;
+}
+
+.mosaic-item.span-2y {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .mosaic-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-auto-rows: 150px;
+    }
+}
+
+@media (max-width: 520px) {
+    .mosaic-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-auto-rows: 140px;
+    }
+
+    .mosaic-item {
+        border-radius: 10px;
+    }
+}
+
+/* Responsividade Cardápio */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pizza-tamanhos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-item-price {
+        margin-top: 8px;
+    }
+
+    .pizza-item .pizza-prices {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .pizza-prices span {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item {
+        padding: 15px;
+    }
+
+    .menu-item-name {
+        font-size: 1rem;
+    }
+
+    .menu-item-price {
+        font-size: 1.1rem;
+    }
+
+    .menu-item-desc {
+        font-size: 0.9rem;
+    }
+
+    .btn-delivery {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}
+
+/* ===================================
+   PÁGINA CONTATO
+   =================================== */
+
+.contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.contato-subtitle {
+    color: var(--cor-primaria);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Coluna do Mapa */
+.contato-mapa {
+    display: flex;
+    flex-direction: column;
+}
+
+.mapa-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.mapa-container iframe {
+    display: block;
+    width: 100%;
+}
+
+.contato-info-box {
+    background: linear-gradient(135deg, rgba(139, 31, 65, 0.05), rgba(27, 94, 32, 0.05));
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid var(--cor-primaria);
+}
+
+.contato-info-box p {
+    margin: 12px 0;
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.contato-info-box strong {
+    color: var(--cor-preta);
+    font-weight: 600;
+}
+
+/* Coluna do Formulário */
+.contato-formulario {
+    background: var(--cor-cinza-claro);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--cor-preta);
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px 15px;
+    border: 2px solid var(--cor-cinza-medio);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--fonte-principal);
+    transition: all 0.3s ease;
+    background-color: var(--cor-branca);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(139, 31, 65, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+}
+
+.btn-enviar {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    padding: 15px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-enviar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-mensagem {
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.form-mensagem.sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-mensagem.erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsividade Contato */
+@media (max-width: 968px) {
+    .contato-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .mapa-container iframe {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contato-formulario {
+        padding: 20px;
+    }
+
+    .contato-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .mapa-container iframe {
+        height: 300px;
+    }
+
+    .contato-info-box {
+        padding: 20px;
+    }
+
+    .contato-info-box p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contato-formulario {
+        padding: 15px;
+    }
+
+    .contato-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+
+    .btn-enviar {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    .mapa-container iframe {
+        height: 250px;
+    }
+}

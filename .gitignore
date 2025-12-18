@@ -1,0 +1,23 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+*.code-workspace
+
+# Node/Build (not used now, keep tidy)
+node_modules/
+dist/
+build/
+
+# Python/PHP cache
+__pycache__/
+*.pyc
+vendor/
