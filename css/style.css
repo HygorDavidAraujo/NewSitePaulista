@@ -1066,7 +1066,7 @@ footer {
     }
 
     .pizza-item .pizza-prices {
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
         flex-wrap: wrap;
     }
