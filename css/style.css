@@ -674,7 +674,8 @@ footer {
 }
 
 .accordion-content.active {
-    max-height: 500px;
+    max-height: 2000px; /* sem corte de conteúdo */
+    overflow: visible;
     padding: 25px;
     border-top: 3px solid var(--cor-primaria);
 }

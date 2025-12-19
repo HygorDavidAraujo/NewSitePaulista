@@ -66,11 +66,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetContent = document.getElementById(targetId);
             const isActive = this.classList.contains('active');
             
-            // Fechar todos os accordions
+            // Fechar todos os accordions com animação de recolher
             accordionButtons.forEach(btn => btn.classList.remove('active'));
             accordionContents.forEach(content => {
+                if (content.classList.contains('active')) {
+                    // define altura atual para animar o fechamento
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    // força reflow para aplicar o valor antes de reduzir
+                    void content.offsetHeight;
+                    content.style.maxHeight = '0';
+                }
                 content.classList.remove('active');
-                content.style.maxHeight = null;
                 content.style.paddingTop = null;
                 content.style.paddingBottom = null;
             });
@@ -81,6 +87,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 targetContent.classList.add('active');
                 // Expandir suavemente: altura baseada no conteúdo real
                 targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+                // Após a transição, liberar para altura automática (evita corte de conteúdo dinâmico)
+                const onTransitionEnd = () => {
+                    if (targetContent.classList.contains('active')) {
+                        targetContent.style.maxHeight = 'none';
+                    }
+                    targetContent.removeEventListener('transitionend', onTransitionEnd);
+                };
+                targetContent.addEventListener('transitionend', onTransitionEnd);
                 // Garantir padding visível em inline style durante a transição
                 targetContent.style.paddingTop = '15px';
                 targetContent.style.paddingBottom = '15px';
@@ -91,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ajustar altura inicial dos accordions já ativos no load (ex.: primeira seção aberta)
     accordionContents.forEach(content => {
         if (content.classList.contains('active')) {
-            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.maxHeight = 'none';
             content.style.paddingTop = '15px';
             content.style.paddingBottom = '15px';
         }
