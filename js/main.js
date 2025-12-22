@@ -397,4 +397,100 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('%c🍕 Pizzaria Paulista', 'font-size: 24px; font-weight: bold; color: #8B1F41;');
     console.log('%cSite desenvolvido com ❤️', 'font-size: 14px; color: #1B5E20;');
     
+    // ===================================
+    // EXIT INTENT POPUP
+    // ===================================
+    
+    // Verifica se é desktop (largura > 768px)
+    function isDesktop() {
+        return window.innerWidth > 768;
+    }
+    
+    // Verifica se o popup já foi mostrado nos últimos 15 dias
+    function shouldShowPopup() {
+        if (!isDesktop()) {
+            return false; // Não mostrar em mobile
+        }
+        
+        const lastShown = localStorage.getItem('exitPopupLastShown');
+        if (!lastShown) {
+            return true;
+        }
+        
+        const daysSinceLastShown = (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24);
+        return daysSinceLastShown >= 15;
+    }
+    
+    // Salvar que o popup foi mostrado
+    function markPopupAsShown() {
+        localStorage.setItem('exitPopupLastShown', Date.now().toString());
+    }
+    
+    // Mostrar o popup
+    function showExitPopup() {
+        const popup = document.getElementById('exitPopup');
+        if (popup) {
+            popup.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Impedir scroll
+        }
+    }
+    
+    // Fechar o popup
+    function closeExitPopup() {
+        const popup = document.getElementById('exitPopup');
+        if (popup) {
+            popup.classList.remove('show');
+            document.body.style.overflow = ''; // Restaurar scroll
+        }
+    }
+    
+    // Detectar exit intent (mouse saindo da janela)
+    let exitIntentTriggered = false;
+    
+    document.addEventListener('mouseleave', function(e) {
+        // Verifica se o mouse está saindo pela parte superior da página
+        if (e.clientY <= 0 && !exitIntentTriggered && shouldShowPopup()) {
+            exitIntentTriggered = true;
+            showExitPopup();
+            markPopupAsShown();
+        }
+    });
+    
+    // Event listeners para fechar o popup
+    const closeBtn = document.querySelector('.exit-popup-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeExitPopup();
+        });
+    }
+    
+    // Fechar ao clicar fora do conteúdo
+    const popup = document.getElementById('exitPopup');
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                closeExitPopup();
+            }
+        });
+    }
+    
+    // Fechar ao clicar no botão do WhatsApp (usuário está convertendo)
+    const exitPopupBtn = document.getElementById('exitPopupBtn');
+    if (exitPopupBtn) {
+        exitPopupBtn.addEventListener('click', function() {
+            // Delay para permitir que o link abra antes de fechar
+            setTimeout(() => {
+                closeExitPopup();
+            }, 500);
+        });
+    }
+    
+    // Fechar com a tecla ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeExitPopup();
+        }
+    });
+    
 });

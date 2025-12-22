@@ -1339,3 +1339,216 @@ footer {
         height: 250px;
     }
 }
+
+/* ===================================
+   EXIT POPUP
+   =================================== */
+
+.exit-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.exit-popup.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.exit-popup-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    border-radius: 20px;
+    max-width: 550px;
+    width: 90%;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.4s ease;
+    overflow: hidden;
+    border: 3px solid var(--cor-primaria);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.exit-popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.exit-popup-close:hover {
+    background: var(--cor-hover);
+    transform: rotate(90deg);
+}
+
+.exit-popup-header {
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-hover) 100%);
+    color: white;
+    padding: 40px 30px 30px;
+    text-align: center;
+}
+
+.exit-popup-header h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.exit-popup-header p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.exit-popup-discount {
+    display: inline-block;
+    background: var(--cor-secundaria);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.exit-popup-body {
+    padding: 35px 30px;
+    text-align: center;
+}
+
+.exit-popup-coupon {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffe6b3 100%);
+    border: 2px dashed var(--cor-primaria);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.coupon-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    text-transform: uppercase;
+}
+
+.coupon-code {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--cor-secundaria);
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.exit-popup-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--cor-secundaria) 0%, #2e7d32 100%);
+    color: white;
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(27, 94, 32, 0.4);
+    border: none;
+    cursor: pointer;
+}
+
+.exit-popup-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(27, 94, 32, 0.5);
+    background: linear-gradient(135deg, #2e7d32 0%, var(--cor-secundaria) 100%);
+}
+
+.exit-popup-footer-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsivo para popup */
+@media (max-width: 768px) {
+    .exit-popup-content {
+        max-width: 90%;
+        margin: 20px;
+    }
+
+    .exit-popup-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .exit-popup-header p {
+        font-size: 1rem;
+    }
+
+    .exit-popup-discount {
+        font-size: 2rem;
+        padding: 12px 30px;
+    }
+
+    .coupon-code {
+        font-size: 1.4rem;
+    }
+
+    .exit-popup-btn {
+        font-size: 1rem;
+        padding: 15px 25px;
+    }
+}
