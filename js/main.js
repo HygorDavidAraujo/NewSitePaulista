@@ -421,10 +421,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: formData
                 });
                 
-                const result = await response.json();
+                // Tentar interpretar como JSON; se falhar, usar texto bruto
+                let result;
+                const contentType = response.headers.get('content-type') || '';
+                if (contentType.includes('application/json')) {
+                    result = await response.json();
+                } else {
+                    const text = await response.text();
+                    result = { success: response.ok, message: text || 'Erro desconhecido ao enviar.' };
+                }
                 
-                if (result.success) {
-                    mostrarMensagem(result.message, 'sucesso');
+                if (response.ok && result.success) {
+                    mostrarMensagem(result.message || 'Mensagem enviada com sucesso!', 'sucesso');
                     formContato.reset();
                     
                     // Scroll suave para a mensagem
@@ -432,7 +440,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         formMensagem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }, 100);
                 } else {
-                    mostrarMensagem(result.message, 'erro');
+                    const msg = result.message || 'Erro ao enviar mensagem. Por favor, tente novamente.';
+                    mostrarMensagem(msg, 'erro');
                 }
             } catch (error) {
                 console.error('Erro:', error);
