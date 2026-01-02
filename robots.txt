@@ -12,7 +12,7 @@ Disallow: /private/
 Disallow: /*.php$
 
 # Sitemaps
-Sitemap: https://netuno.privatedns.com.br/sitemap.xml
+Sitemap: https://pizzariapaulista.com.br/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1

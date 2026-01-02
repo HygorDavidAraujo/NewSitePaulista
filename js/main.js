@@ -271,6 +271,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (formContato) {
         // Máscara para telefone
         const telefoneInput = document.getElementById('telefone');
+        const emailInput = document.getElementById('email');
+        const nomeInput = document.getElementById('nome');
+        const mensagemInput = document.getElementById('mensagem');
+        
         if (telefoneInput) {
             telefoneInput.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, '');
@@ -281,6 +285,66 @@ document.addEventListener('DOMContentLoaded', function() {
                         value = value.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
                     }
                     e.target.value = value;
+                }
+                
+                // Validação visual
+                const telefoneNumeros = value.replace(/\D/g, '');
+                if (telefoneNumeros.length === 10 || telefoneNumeros.length === 11) {
+                    e.target.classList.remove('error');
+                    e.target.classList.add('valid');
+                } else if (telefoneNumeros.length > 0) {
+                    e.target.classList.remove('valid');
+                    e.target.classList.add('error');
+                } else {
+                    e.target.classList.remove('valid', 'error');
+                }
+            });
+        }
+        
+        // Validação de email em tempo real
+        if (emailInput) {
+            emailInput.addEventListener('blur', function() {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (this.value.trim()) {
+                    if (emailRegex.test(this.value.trim())) {
+                        this.classList.remove('error');
+                        this.classList.add('valid');
+                    } else {
+                        this.classList.remove('valid');
+                        this.classList.add('error');
+                    }
+                } else {
+                    this.classList.remove('valid', 'error');
+                }
+            });
+        }
+        
+        // Validação de nome
+        if (nomeInput) {
+            nomeInput.addEventListener('blur', function() {
+                if (this.value.trim().length >= 3) {
+                    this.classList.remove('error');
+                    this.classList.add('valid');
+                } else if (this.value.trim().length > 0) {
+                    this.classList.remove('valid');
+                    this.classList.add('error');
+                } else {
+                    this.classList.remove('valid', 'error');
+                }
+            });
+        }
+        
+        // Validação de mensagem
+        if (mensagemInput) {
+            mensagemInput.addEventListener('blur', function() {
+                if (this.value.trim().length >= 10) {
+                    this.classList.remove('error');
+                    this.classList.add('valid');
+                } else if (this.value.trim().length > 0) {
+                    this.classList.remove('valid');
+                    this.classList.add('error');
+                } else {
+                    this.classList.remove('valid', 'error');
                 }
             });
         }
@@ -306,10 +370,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
+            // Validar nome (mínimo 3 caracteres)
+            if (nome.length < 3) {
+                mostrarMensagem('Por favor, insira um nome válido (mínimo 3 caracteres).', 'erro');
+                document.getElementById('nome').focus();
+                return;
+            }
+            
+            // Validar telefone
+            const telefoneNumeros = telefone.replace(/\D/g, '');
+            if (telefoneNumeros.length < 10 || telefoneNumeros.length > 11) {
+                mostrarMensagem('Por favor, insira um telefone válido (DDD + número).', 'erro');
+                document.getElementById('telefone').focus();
+                return;
+            }
+            
             // Validar e-mail
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 mostrarMensagem('Por favor, insira um e-mail válido.', 'erro');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            // Validar mensagem (mínimo 10 caracteres)
+            if (mensagem.length < 10) {
+                mostrarMensagem('Por favor, insira uma mensagem mais detalhada (mínimo 10 caracteres).', 'erro');
+                document.getElementById('mensagem').focus();
                 return;
             }
             
