@@ -110,7 +110,7 @@ $mensagemPizzaria = "
         </div>
         <div class='footer'>
             <p>Este e-mail foi enviado automaticamente pelo formulário de contato do site.<br>
-            Pizzaria Paulista - Setor Oeste, Goiânia - GO</p>
+            Pizzaria Paulista - Avenida D, nº 616, Setor Oeste, Goiânia - GO - CEP 74140-160</p>
         </div>
     </div>
 </body>
@@ -185,7 +185,7 @@ $mensagemCliente = "
             
             <p style='margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 5px;'>
                 <strong>📞 Contato:</strong> (62) 3922-2167<br>
-                <strong>📍 Endereço:</strong> Rua 22, nº 443, Setor Oeste, Goiânia - GO<br>
+                <strong>📍 Endereço:</strong> Avenida D, nº 616, Setor Oeste, Goiânia-GO, CEP: 74140-160<br>
                 <strong>⏰ Horário:</strong> Terça a Domingo, 18:00h às 22:30h
             </p>
         </div>

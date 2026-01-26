@@ -4,6 +4,91 @@
 
 // Aguardar o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', function() {
+
+    // ===================================
+    // MODAL - MUDANÇA DE ENDEREÇO / DELIVERY
+    // ===================================
+    (function initMudancaEnderecoModal() {
+        const overlay = document.createElement('div');
+        overlay.className = 'pp-modal-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', 'Aviso importante: mudança de endereço e atendimento somente delivery');
+
+        overlay.innerHTML = `
+            <div class="pp-modal" role="document">
+                <button type="button" class="pp-modal-close" aria-label="Fechar aviso">×</button>
+
+                <div class="pp-modal-header">
+                    <div class="pp-modal-badge">NOVO ENDEREÇO</div>
+                    <h2 class="pp-modal-title">Mudamos de endereço!</h2>
+                    <p class="pp-modal-subtitle">Agora estamos em <strong>Avenida D, nº 616</strong> — Setor Oeste, Goiânia-GO <strong>(CEP 74140-160)</strong>.</p>
+                </div>
+
+                <div class="pp-modal-highlight">
+                    <div class="pp-modal-alert" role="note" aria-label="Atenção">
+                        <span class="pp-modal-alert-icon" aria-hidden="true">!</span>
+                        <span class="pp-modal-alert-text">ATENÇÃO</span>
+                    </div>
+                    <h3 class="pp-modal-highlight-title">Estamos atendendo <strong>somente por Delivery (Entregas)</strong></h3>
+                    <p class="pp-modal-highlight-text">Faça seu pedido por um dos canais abaixo:</p>
+                </div>
+
+                <ul class="pp-modal-channels" aria-label="Canais de pedido">
+                    <li class="pp-modal-channel">
+                        <span class="pp-modal-channel-label">Telefone fixo</span>
+                        <a class="pp-modal-channel-link" href="tel:+556239222167">(62) 3922-2167</a>
+                    </li>
+                    <li class="pp-modal-channel">
+                        <span class="pp-modal-channel-label">WhatsApp</span>
+                        <a class="pp-modal-channel-link" href="https://wa.me/556239222167" target="_blank" rel="noopener">(62) 3922-2167</a>
+                    </li>
+                    <li class="pp-modal-channel">
+                        <span class="pp-modal-channel-label">Site próprio</span>
+                        <a class="pp-modal-channel-link" href="https://delivery.pizzariapaulista.com.br" target="_blank" rel="noopener">delivery.pizzariapaulista.com.br</a>
+                    </li>
+                    <li class="pp-modal-channel">
+                        <span class="pp-modal-channel-label">iFood</span>
+                        <a class="pp-modal-channel-link" href="https://www.ifood.com.br/delivery/goiania-go/pizzaria-paulista---goiania-setor-oeste/72eef194-5e44-4bed-9905-84fd86c788e8" target="_blank" rel="noopener">Abrir no iFood</a>
+                    </li>
+                </ul>
+
+                <div class="pp-modal-actions">
+                    <button type="button" class="pp-modal-ack">Estou Ciente desta Informação.</button>
+                </div>
+            </div>
+        `;
+
+        const closeBtn = overlay.querySelector('.pp-modal-close');
+        const ackBtn = overlay.querySelector('.pp-modal-ack');
+
+        function closeModal() {
+            document.body.classList.remove('pp-modal-lock');
+            overlay.classList.remove('pp-modal-overlay--open');
+
+            // Remove do DOM após animação
+            window.setTimeout(() => {
+                if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+            }, 200);
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        ackBtn.addEventListener('click', closeModal);
+
+        // Fechar com ESC
+        overlay.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Inserir e abrir
+        document.body.appendChild(overlay);
+        document.body.classList.add('pp-modal-lock');
+        // Pequeno delay para permitir transição CSS
+        window.setTimeout(() => {
+            overlay.classList.add('pp-modal-overlay--open');
+            ackBtn.focus();
+        }, 0);
+    })();
     
     // ===================================
     // MENU MOBILE TOGGLE

@@ -65,4 +65,4 @@ Há duas formas. Use o **GitHub CLI (gh)** ou faça pelo site.
 ## Contato
 
 - Telefone: (62) 3922-2167
-- Endereço: Av. D, nº 616, Setor Oeste, Goiânia-GO
+- Endereço: Avenida D, nº 616, Setor Oeste, Goiânia-GO, CEP: 74140-160
