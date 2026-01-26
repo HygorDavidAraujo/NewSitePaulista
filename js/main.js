@@ -5,10 +5,56 @@
 // Aguardar o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Debug/diagnóstico: indica que o main.js carregou e executou
+    window.__ppMainJsLoaded = true;
+
     // ===================================
     // MODAL - MUDANÇA DE ENDEREÇO / DELIVERY
     // ===================================
     (function initMudancaEnderecoModal() {
+        function ensureMudancaModalStyles() {
+            // Se o CSS do modal não estiver publicado/carregado, o conteúdo pode
+            // acabar “perdido” no fim da página. Este fallback injeta estilos mínimos.
+            if (document.getElementById('pp-modal-style')) return;
+
+            // Detectar se existe regra aplicada (position: fixed) para .pp-modal-overlay
+            const test = document.createElement('div');
+            test.className = 'pp-modal-overlay';
+            document.body.appendChild(test);
+            const position = window.getComputedStyle(test).position;
+            document.body.removeChild(test);
+
+            if (position === 'fixed') return;
+
+            const style = document.createElement('style');
+            style.id = 'pp-modal-style';
+            style.textContent = `
+                body.pp-modal-lock{overflow:hidden;}
+                .pp-modal-overlay{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;padding:16px;padding-top:max(16px, env(safe-area-inset-top));padding-bottom:max(16px, env(safe-area-inset-bottom));background:rgba(0,0,0,.72);opacity:0;pointer-events:none;transition:opacity .2s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+                .pp-modal-overlay.pp-modal-overlay--open{opacity:1;pointer-events:auto;}
+                .pp-modal{position:relative;width:min(720px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.35);padding:18px;}
+                @media (max-width:768px){.pp-modal-overlay{align-items:flex-start;}}
+                .pp-modal-close{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:999px;border:none;background:#8B1F41;color:#fff;font-size:26px;line-height:1;cursor:pointer;}
+                .pp-modal-badge{display:inline-block;background:#1B5E20;color:#fff;font-weight:700;font-size:.8rem;padding:6px 10px;border-radius:999px;}
+                .pp-modal-title{margin:10px 0 6px;font-size:1.6rem;}
+                .pp-modal-subtitle{margin:0 0 14px;color:#333;}
+                .pp-modal-highlight{background:rgba(139,31,65,.06);border-left:4px solid #8B1F41;padding:12px 12px;border-radius:12px;margin:10px 0 14px;}
+                .pp-modal-alert{display:inline-flex;align-items:center;gap:8px;background:#8B1F41;color:#fff;padding:6px 10px;border-radius:999px;font-weight:800;font-size:.85rem;}
+                .pp-modal-alert-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#fff;color:#8B1F41;font-weight:900;}
+                .pp-modal-highlight-title{margin:10px 0 6px;font-size:1.15rem;}
+                .pp-modal-highlight-text{margin:0;color:#333;}
+                .pp-modal-channels{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+                .pp-modal-channel{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border:1px solid #eee;border-radius:12px;background:#fafafa;}
+                .pp-modal-channel-label{font-size:.85rem;color:#555;font-weight:600;}
+                .pp-modal-channel-link{color:#8B1F41;font-weight:800;text-decoration:none;word-break:break-word;}
+                .pp-modal-actions{margin-top:14px;display:flex;}
+                .pp-modal-ack{width:100%;border:none;border-radius:999px;padding:14px 16px;background:#8B1F41;color:#fff;font-weight:800;cursor:pointer;}
+            `;
+            document.head.appendChild(style);
+        }
+
+        ensureMudancaModalStyles();
+
         const overlay = document.createElement('div');
         overlay.className = 'pp-modal-overlay';
         overlay.setAttribute('role', 'dialog');
@@ -587,24 +633,32 @@ document.addEventListener('DOMContentLoaded', function() {
         return window.innerWidth > 768;
     }
     
-    // Verifica se o popup já foi mostrado nos últimos 15 dias
+    // Verifica se o popup já foi mostrado nos últimos 3 dias
     function shouldShowPopup() {
         if (!isDesktop()) {
             return false; // Não mostrar em mobile
         }
-        
-        const lastShown = localStorage.getItem('exitPopupLastShown');
-        if (!lastShown) {
+
+        let lastShown;
+        try {
+            lastShown = localStorage.getItem('exitPopupLastShown');
+        } catch (_) {
             return true;
         }
-        
+
+        if (!lastShown) return true;
+
         const daysSinceLastShown = (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24);
-        return daysSinceLastShown >= 15;
+        return daysSinceLastShown >= 3;
     }
     
     // Salvar que o popup foi mostrado
     function markPopupAsShown() {
-        localStorage.setItem('exitPopupLastShown', Date.now().toString());
+        try {
+            localStorage.setItem('exitPopupLastShown', Date.now().toString());
+        } catch (_) {
+            // ignore
+        }
     }
     
     // Mostrar o popup

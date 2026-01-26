@@ -575,10 +575,14 @@ footer {
     align-items: flex-end;
     justify-content: center;
     padding: 18px;
+    padding-top: max(18px, env(safe-area-inset-top));
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
     z-index: 2500;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .pp-modal-overlay.pp-modal-overlay--open {
@@ -591,7 +595,11 @@ footer {
     background: var(--cor-branca);
     border-radius: 16px;
     box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
-    overflow: hidden;
+    /* Em mobile, a caixa pode ficar mais alta que a viewport.
+       Permitir scroll interno evita que o topo fique escondido. */
+    overflow: auto;
+    max-height: calc(100vh - 36px);
+    max-height: calc(100dvh - 36px);
     position: relative;
     transform: translateY(14px);
     transition: transform 0.2s ease;
@@ -645,6 +653,12 @@ footer {
     margin-bottom: 12px;
 }
 
+
+@media (max-width: 768px) {
+    .pp-modal-overlay {
+        align-items: flex-start;
+    }
+}
 .pp-modal-title {
     font-size: 1.45rem;
     line-height: 1.2;
