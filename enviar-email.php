@@ -191,7 +191,7 @@ $mensagemCliente = "
         </div>
         <div class='footer'>
             <p>Pizzaria Paulista - Tradição e Sabor desde 2002<br>
-            <a href='https://delivery.pizzariapaulista.com.br' style='color: #8B1F41;'>Faça seu pedido online</a></p>
+            <a href='https://pizzariapaulista.menudino.com' style='color: #8B1F41;'>Faça seu pedido online</a></p>
         </div>
     </div>
 </body>

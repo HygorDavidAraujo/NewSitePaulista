@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                     <li class="pp-modal-channel">
                         <span class="pp-modal-channel-label">Site próprio</span>
-                        <a class="pp-modal-channel-link" href="https://delivery.pizzariapaulista.com.br" target="_blank" rel="noopener">delivery.pizzariapaulista.com.br</a>
+                        <a class="pp-modal-channel-link" href="https://pizzariapaulista.menudino.com" target="_blank" rel="noopener">pizzariapaulista.menudino.com</a>
                     </li>
                     <li class="pp-modal-channel">
                         <span class="pp-modal-channel-label">iFood</span>
