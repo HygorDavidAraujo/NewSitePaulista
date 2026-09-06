@@ -186,7 +186,7 @@ $mensagemCliente = "
             <p style='margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 5px;'>
                 <strong>📞 Contato:</strong> (62) 3922-2167<br>
                 <strong>📍 Endereço:</strong> Avenida D, nº 616, Setor Oeste, Goiânia-GO, CEP: 74140-160<br>
-                <strong>⏰ Horário:</strong> Terça a Domingo, 18:00h às 22:30h
+                <strong>⏰ Horário:</strong> Terça a Domingo, 18:00h às 22:00h
             </p>
         </div>
         <div class='footer'>

@@ -363,21 +363,21 @@ document.addEventListener('DOMContentLoaded', function() {
             status = '<span style="color: #ff5252;">● Fechado</span>';
             proximoHorario = 'Abre terça-feira às 18:00h';
         } 
-        // Terça a Domingo (18:00h às 22:30h)
+        // Terça a Domingo (18:00h às 22:00h)
         else {
             const horaEmMinutos = horaAtual * 60 + minutoAtual;
             const abertura = 18 * 60; // 18:00
-            const fechamento = 22 * 60 + 30; // 22:30
+            const fechamento = 22 * 60; // 22:00
             
             if (horaEmMinutos >= abertura && horaEmMinutos <= fechamento) {
                 status = '<span style="color: #4caf50;">● Aberto agora</span>';
-                proximoHorario = 'Fecha às 22:30h';
+                proximoHorario = 'Fecha às 22:00h';
             } else {
                 status = '<span style="color: #ff5252;">● Fechado</span>';
                 if (horaEmMinutos < abertura) {
                     proximoHorario = 'Abre hoje às 18:00h';
                 } else {
-                    // Após o fechamento (22:30)
+                    // Após o fechamento (22:00)
                     // De terça a sábado: abre amanhã às 18h
                     // Domingo: próxima abertura é terça às 18h (segunda é fechada)
                     proximoHorario = (diaSemana === 0) ? 'Abre terça-feira às 18:00h' : 'Abre amanhã às 18:00h';
