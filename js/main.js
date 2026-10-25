@@ -32,23 +32,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 body.pp-modal-lock{overflow:hidden;}
                 .pp-modal-overlay{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;padding:16px;padding-top:max(16px, env(safe-area-inset-top));padding-bottom:max(16px, env(safe-area-inset-bottom));background:rgba(0,0,0,.72);opacity:0;pointer-events:none;transition:opacity .2s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;}
                 .pp-modal-overlay.pp-modal-overlay--open{opacity:1;pointer-events:auto;}
-                .pp-modal{position:relative;width:min(720px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.35);padding:18px;}
-                @media (max-width:768px){.pp-modal-overlay{align-items:flex-start;}}
-                .pp-modal-close{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:999px;border:none;background:#8B1F41;color:#fff;font-size:26px;line-height:1;cursor:pointer;}
-                .pp-modal-badge{display:inline-block;background:#1B5E20;color:#fff;font-weight:700;font-size:.8rem;padding:6px 10px;border-radius:999px;}
-                .pp-modal-title{margin:10px 0 6px;font-size:1.6rem;}
-                .pp-modal-subtitle{margin:0 0 14px;color:#333;}
-                .pp-modal-highlight{background:rgba(139,31,65,.06);border-left:4px solid #8B1F41;padding:12px 12px;border-radius:12px;margin:10px 0 14px;}
-                .pp-modal-alert{display:inline-flex;align-items:center;gap:8px;background:#8B1F41;color:#fff;padding:6px 10px;border-radius:999px;font-weight:800;font-size:.85rem;}
-                .pp-modal-alert-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#fff;color:#8B1F41;font-weight:900;}
-                .pp-modal-highlight-title{margin:10px 0 6px;font-size:1.15rem;}
-                .pp-modal-highlight-text{margin:0;color:#333;}
-                .pp-modal-channels{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
-                .pp-modal-channel{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border:1px solid #eee;border-radius:12px;background:#fafafa;}
-                .pp-modal-channel-label{font-size:.85rem;color:#555;font-weight:600;}
-                .pp-modal-channel-link{color:#8B1F41;font-weight:800;text-decoration:none;word-break:break-word;}
-                .pp-modal-actions{margin-top:14px;display:flex;}
-                .pp-modal-ack{width:100%;border:none;border-radius:999px;padding:14px 16px;background:#8B1F41;color:#fff;font-weight:800;cursor:pointer;}
+                .pp-modal{position:relative;width:min(560px,100%);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow:auto;background:#fff;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.35);}
+                .pp-modal-close{position:absolute;top:6px;right:6px;width:36px;height:36px;border-radius:999px;border:none;background:#8B1F41;color:#fff;font-size:24px;line-height:1;cursor:pointer;}
+                .pp-modal-header{padding:16px 48px 10px 16px;background:linear-gradient(135deg,rgba(139,31,65,.08),rgba(27,94,32,.08));}
+                .pp-modal-title{margin:0 0 4px;font-size:1.25rem;line-height:1.2;}
+                .pp-modal-subtitle{margin:0;color:#333;font-size:.9rem;}
+                .pp-modal-highlight{background:rgba(139,31,65,.06);border-left:4px solid #8B1F41;padding:10px 12px;margin:8px 12px;border-radius:6px;}
+                .pp-modal-highlight-text{margin:0;color:#333;font-size:.9rem;line-height:1.35;}
+                .pp-modal-channels-title{margin:10px 12px 6px;font-size:.9rem;}
+                .pp-modal-channels{list-style:none;margin:0;padding:0 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+                .pp-modal-channel{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0;padding:7px 9px;border:1px solid #eee;border-radius:7px;background:#fafafa;}
+                .pp-modal-channel-label{font-size:.7rem;color:#555;font-weight:600;}
+                .pp-modal-channel-link{color:#8B1F41;font-size:.8rem;font-weight:800;text-decoration:none;overflow-wrap:anywhere;}
+                .pp-modal-actions{padding:10px 12px 12px;}
+                .pp-modal-ack{width:100%;border:none;border-radius:7px;padding:10px 12px;background:#8B1F41;color:#fff;font-size:.9rem;font-weight:800;cursor:pointer;}
+                @media (max-height:600px){.pp-modal-header{padding-top:10px;padding-bottom:6px}.pp-modal-highlight{padding:7px 10px;margin-top:6px;margin-bottom:6px}.pp-modal-channels-title{margin-top:6px}.pp-modal-channel{padding:5px 7px}.pp-modal-actions{padding-top:7px;padding-bottom:8px}}
+                @media (max-height:400px){.pp-modal-header{padding-top:8px;padding-bottom:4px}.pp-modal-title{font-size:1.1rem}.pp-modal-subtitle{font-size:.78rem;line-height:1.2}.pp-modal-highlight{padding:5px 8px;margin:5px 10px}.pp-modal-highlight-text{font-size:.78rem;line-height:1.2}.pp-modal-channels-title{font-size:.8rem;margin:5px 10px 3px}.pp-modal-channels{grid-template-columns:repeat(3,minmax(0,1fr));padding:0 10px;gap:4px}.pp-modal-channel{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:0 4px;padding:4px 6px}.pp-modal-channel-label{font-size:.6rem}.pp-modal-channel-link{font-size:.68rem}.pp-modal-actions{padding:5px 10px 6px}.pp-modal-ack{padding:6px 8px;font-size:.8rem}.pp-modal-close{width:32px;height:32px}}
             `;
             document.head.appendChild(style);
         }
@@ -59,30 +58,25 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.className = 'pp-modal-overlay';
         overlay.setAttribute('role', 'dialog');
         overlay.setAttribute('aria-modal', 'true');
-        overlay.setAttribute('aria-label', 'Aviso importante: mudança de endereço e atendimento somente delivery');
+        overlay.setAttribute('aria-label', 'Novo endereço e pausa temporária no atendimento');
 
         overlay.innerHTML = `
             <div class="pp-modal" role="document">
                 <button type="button" class="pp-modal-close" aria-label="Fechar aviso">×</button>
 
                 <div class="pp-modal-header">
-                    <div class="pp-modal-badge">NOVO ENDEREÇO</div>
-                    <h2 class="pp-modal-title">Mudamos de endereço!</h2>
+                    <h2 class="pp-modal-title">Novo Endereço</h2>
                     <p class="pp-modal-subtitle">Agora estamos em <strong>Avenida D, nº 616</strong> — Setor Oeste, Goiânia-GO <strong>(CEP 74140-160)</strong>.</p>
                 </div>
 
                 <div class="pp-modal-highlight">
-                    <div class="pp-modal-alert" role="note" aria-label="Atenção">
-                        <span class="pp-modal-alert-icon" aria-hidden="true">!</span>
-                        <span class="pp-modal-alert-text">ATENÇÃO</span>
-                    </div>
-                    <h3 class="pp-modal-highlight-title">Estamos atendendo <strong>somente por Delivery (Entregas)</strong></h3>
-                    <p class="pp-modal-highlight-text">Faça seu pedido por um dos canais abaixo:</p>
+                    <p class="pp-modal-highlight-text">Estamos com a produção e atendimento pausados temporariamente, sem data de retorno definida.</p>
                 </div>
 
-                <ul class="pp-modal-channels" aria-label="Canais de pedido">
+                <h3 class="pp-modal-channels-title">Canais de atendimento e redes sociais</h3>
+                <ul class="pp-modal-channels" aria-label="Canais de atendimento e redes sociais">
                     <li class="pp-modal-channel">
-                        <span class="pp-modal-channel-label">Telefone fixo</span>
+                        <span class="pp-modal-channel-label">Telefone</span>
                         <a class="pp-modal-channel-link" href="tel:+556239222167">(62) 3922-2167</a>
                     </li>
                     <li class="pp-modal-channel">
@@ -90,17 +84,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a class="pp-modal-channel-link" href="https://wa.me/556239222167" target="_blank" rel="noopener">(62) 3922-2167</a>
                     </li>
                     <li class="pp-modal-channel">
-                        <span class="pp-modal-channel-label">Site próprio</span>
-                        <a class="pp-modal-channel-link" href="https://pizzariapaulista.menudino.com" target="_blank" rel="noopener">pizzariapaulista.menudino.com</a>
+                        <span class="pp-modal-channel-label">Site de pedidos</span>
+                        <a class="pp-modal-channel-link" href="https://pizzariapaulista.menudino.com" target="_blank" rel="noopener">Acessar site</a>
                     </li>
                     <li class="pp-modal-channel">
                         <span class="pp-modal-channel-label">iFood</span>
                         <a class="pp-modal-channel-link" href="https://www.ifood.com.br/delivery/goiania-go/pizzaria-paulista---goiania-setor-oeste/72eef194-5e44-4bed-9905-84fd86c788e8" target="_blank" rel="noopener">Abrir no iFood</a>
                     </li>
+                    <li class="pp-modal-channel">
+                        <span class="pp-modal-channel-label">Facebook</span>
+                        <a class="pp-modal-channel-link" href="https://facebook.com/pizzariapaulista" target="_blank" rel="noopener">Acessar página</a>
+                    </li>
+                    <li class="pp-modal-channel">
+                        <span class="pp-modal-channel-label">Instagram</span>
+                        <a class="pp-modal-channel-link" href="https://instagram.com/pizzariapaulista" target="_blank" rel="noopener">@pizzariapaulista</a>
+                    </li>
                 </ul>
 
                 <div class="pp-modal-actions">
-                    <button type="button" class="pp-modal-ack">Estou Ciente desta Informação.</button>
+                    <button type="button" class="pp-modal-ack">Fechar aviso</button>
                 </div>
             </div>
         `;
